@@ -46,7 +46,7 @@ You will implement twodomain classes—Author and Book—using **Test-Driven Dev
 *   ToString() returns "Title (Year) by FirstName LastName".
     
 
-** TDD Workflow (What to Do)**
+**TDD Workflow (What to Do)**
 
 2.  **Run the tests**: dotnet test\\ Observe failures (red).
     
@@ -60,4 +60,14 @@ You will implement twodomain classes—Author and Book—using **Test-Driven Dev
 8.  Repeat until **all tests pass**.
     
 
-Tip: Implement basicconstruction first, then invariants, then mutations (ChangeTitle, ChangeAuthor, etc.), then edge cases.
+Tip: Implement basic construction first, then invariants, then mutations (ChangeTitle, ChangeAuthor, etc.), then edge cases.
+
+**Hints & Guidance**
+*	Start by making construction tests pass (valid names, valid year ranges, page count).
+*	Add invariant checks early so mutation methods (ChangeTitle, ChangePages, etc.) reuse the same validation.
+*	Ensure bidirectional integrity:
+    * On Book construction → add to Author.Books
+    * On ChangeAuthor → remove from old author, add to new author
+*	For Isbn: store null for empty/whitespace; otherwise store trimmed string.
+
+
